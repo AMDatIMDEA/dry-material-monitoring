@@ -1,0 +1,47 @@
+classes:
+  empty: ["Empty"]
+  material: ["Polymer", "Material"]
+
+morphology:
+  close_kernel: 3
+  open_kernel: 0
+
+pairing:
+  min_mask_area_px: 40
+  min_horizontal_overlap: 0.55
+  max_center_x_distance_ratio: 0.45
+  max_interface_distance_px: 12
+  max_interface_distance_ratio: 0.20
+  max_wrong_order_px: 4
+  min_pair_score: 0.50
+  overlap_weight: 0.35
+  center_weight: 0.20
+  interface_weight: 0.35
+  order_weight: 0.10
+
+completeness:
+  # Set this from the acquisition geometry when possible. Null enables inference
+  # from accepted two-class pairs in the same image/frame.
+  expected_full_height_px: null
+  height_tolerance_ratio: 0.22
+  width_tolerance_ratio: 0.35
+  infer_from_valid_pairs: true
+  min_reference_pairs: 1
+
+measurement:
+  max_overlap_fraction: 0.12
+  min_combined_area_px: 100
+
+inference:
+  confidence: 0.25
+  image_size: 1280
+  # Prefer the first CUDA GPU when available, otherwise use CPU.
+  device: auto
+  image_extensions: [".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"]
+  video_extensions: [".mp4", ".avi", ".mov", ".mkv", ".webm"]
+
+rendering:
+  empty_color_bgr: [255, 160, 40]
+  material_color_bgr: [40, 190, 70]
+  invalid_color_bgr: [40, 40, 230]
+  mask_alpha: 0.30

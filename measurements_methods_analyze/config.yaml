@@ -1,0 +1,22 @@
+# Change only this path to analyze a different Run_Experiment session. Relative
+# paths are resolved from this YAML file, so the tracked example is portable.
+experiment_directory: '../Run_Experiment/research_records/example_experiment'
+
+output_directory: 'outputs/example_experiment'
+input_preference: csv  # csv or xlsx; the other format is used as a fallback
+
+reference:
+  # Prefer the contract's explicit reference_volume_from_weight_ml. If it is
+  # blank, this permits capacity * remaining_mass / full_tube_material_mass.
+  allow_full_mass_fraction_fallback: true
+
+repeatability:
+  # Reference volumes within this absolute tolerance form one repeat group.
+  grouping_tolerance_ml: 0.25
+
+plots:
+  dpi: 600
+  formats: [png, pdf]
+  style: seaborn-v0_8-whitegrid
+  figure_width_inches: 7.2
+  figure_height_inches: 5.2

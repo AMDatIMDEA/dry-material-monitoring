@@ -1,0 +1,66 @@
+name: Software bug
+description: Report a reproducible implementation or packaging problem.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Do not upload local configs, camera serials, private paths, weights, or
+        unpublished research data. Replace them with safe placeholders.
+  - type: input
+    id: version
+    attributes:
+      label: Release or Git commit
+      placeholder: v0.1.0 or full commit hash
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - 3d_camera
+        - Material_level_using_yolo
+        - Run_Experiment
+        - experiment_records
+        - measurements_methods_analyze
+        - general_model
+        - installation or CI
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Include the exact sanitized command and smallest safe input description.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and sanitized traceback
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Python, OS, dependency versions, camera/firmware model, and requested/resolved inference device.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety checks
+      options:
+        - label: I removed usernames, serial numbers, private paths, credentials, weights, and unpublished data.
+          required: true
+        - label: I understand that a software bug report is not evidence of measurement validation.
+          required: true

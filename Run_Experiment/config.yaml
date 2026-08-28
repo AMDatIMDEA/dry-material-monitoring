@@ -1,0 +1,33 @@
+schema_version: 1
+
+depth:
+  config: ../3d_camera/config.yaml
+  calibration: ../3d_camera/calibration/empty_tube_calibration.npz
+
+c920:
+  # Resolve the unique Windows DirectShow friendly name containing this text.
+  # Set null to use the numeric fallback below.
+  device_name_contains: C920
+  device_index: 0
+  # This Windows installation deliberately uses DirectShow. It remains a
+  # configurable value rather than a platform hard-code.
+  backend: dshow
+  width: 1920
+  height: 1080
+  fps: 30.0
+  warmup_frames: 30
+  capture_key: c
+  quit_key: q
+  window_name: Synchronized material-level acquisition
+  preview_wait_ms: 10
+  mirror_preview: false
+
+acquisition:
+  frame_count: 6
+  span_seconds: 1.0
+  worker_count: 2
+  scheduling_poll_seconds: 0.005
+
+output:
+  root: research_records
+  storage_profile: research

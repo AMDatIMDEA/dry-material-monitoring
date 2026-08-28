@@ -1,0 +1,28 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-python-311:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install repository and test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r pylock.toml
+          python -m pip install --no-deps -e .
+      - name: Validate installed dependencies
+        run: python -m pip check
+      - name: Run hardware-free test suite
+        run: python -m pytest -q

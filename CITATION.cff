@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, cite the archived software release and the
+  associated paper when available.
+type: software
+title: >-
+  Polymer Specimen Vision System: Reproducible D405 and YOLO Material-Level
+  Measurement
+version: 0.1.0
+authors:
+  - family-names: Abd Al Kader
+    given-names: Mostafa
+  - family-names: Hernández-del-Valle
+    given-names: Miguel
+  - family-names: Haranczyk
+    given-names: Maciej
+abstract: >-
+  A research software system for synchronized laboratory acquisition,
+  Intel RealSense D405 bulk-volume reconstruction, offline YOLO segmentation,
+  method-neutral experiment records, and traceable measurement analysis.
+keywords:
+  - polymer
+  - material level
+  - Intel RealSense D405
+  - YOLO segmentation
+  - depth reconstruction
+  - reproducible research

@@ -1,0 +1,120 @@
+schema_version: 2
+default_profile: powder
+
+# Shared settings are inherited by every material profile. A profile may use a
+# small nested overrides mapping only when its trained model genuinely needs a
+# different value.
+defaults:
+  expected_task: segment
+  estimation_mode: segmentation_interface
+  inference:
+    confidence: 0.60
+    iou: 0.50
+    image_size: 1024
+    # Prefer the first CUDA GPU when PyTorch can use one, otherwise use CPU.
+    device: auto
+    max_detections: 50
+    nms:
+      agnostic: false
+      class_filter_only_semantic: true
+
+  tube_roi:
+    # Safety gate: the whole-image values below are a non-operational
+    # placeholder. Run configure_roi.py on a representative frozen-mount image.
+    frozen: false
+    left: 0.0
+    top: 0.0
+    right: 1.0
+    bottom: 1.0
+    axis: top_to_bottom
+    calibration_reference: null
+
+  estimation:
+    mask_threshold: 0.50
+    row_occupancy_threshold: 0.50
+    row_smoothing_window: 5
+    minimum_dominant_run_rows: 2
+    # Retained for schema-1 compatibility; duplicates are now reported and the
+    # highest-confidence instance is selected rather than rejected.
+    maximum_instances_per_role: 1
+    minimum_column_classified_fraction: 0.50
+    # Fractional geometric checks for single-class masks; these are not pixel
+    # count gates. Support must span the tube laterally/axially and touch the
+    # physically expected ROI end.
+    minimum_single_class_lateral_fraction: 0.25
+    minimum_single_class_axial_fraction: 0.02
+    single_class_end_occupancy_threshold: 0.25
+    # Whole-image mode ignores laboratory background for mask-quality gates.
+    # These small fractional checks only reject obviously tiny detections.
+    minimum_whole_image_detection_lateral_fraction: 0.01
+    minimum_whole_image_detection_axial_fraction: 0.01
+    minimum_whole_image_detection_area_fraction: 0.0005
+
+  aggregation:
+    # Majority-pattern filtering permits one geometrically valid retained image.
+    minimum_valid_images: 1
+    manual_minimum_valid_images: 1
+    maximum_spread_percentage_points: 8.0
+    # Diagnostic reference thresholds only; gaps/overlap are not standalone
+    # rejection reasons.
+    maximum_overlap_fraction: 0.10
+    maximum_unclassified_fraction: 0.25
+    minimum_material_confidence: 0.25
+    minimum_empty_confidence: 0.25
+
+  camera:
+    device_name_contains: C920
+    device_index: 0
+    backend: dshow
+    width: 1920
+    height: 1080
+    fps: 30.0
+    warmup_frames: 30
+    capture_count: 6
+    capture_interval_seconds: 0.2
+    capture_duration_seconds: null
+    capture_key: c
+    quit_key: q
+    window_name: C920 material-level capture
+    preview_wait_ms: 10
+    mirror_preview: false
+    close_on_capture: true
+    freeze_after_capture_ms: 500
+
+  output:
+    root: research_records
+    storage_profile: research
+    image_format: .png
+    save_overlays: true
+    save_masks: true
+    overwrite: false
+    log_level: INFO
+
+# Dataset source labels were 4 Powder, 5 Empty, and 6 polymer. Those source IDs
+# are documentation only: each trained model is validated from model.names.
+model_profiles:
+  powder:
+    recorded_material_names: [Powder, "white powder", "operator supplied powder"]
+    weights: model_weights/powder_best.pt
+    semantic_roles:
+      material:
+        class_name: Powder
+        explicit_id: null
+      empty:
+        class_name: Empty
+        explicit_id: null
+
+  polymer:
+    recorded_material_names: [polymer, "black polymer", "operator supplied polymer"]
+    weights: model_weights/polymer_best.pt
+    semantic_roles:
+      material:
+        class_name: polymer
+        explicit_id: null
+      empty:
+        class_name: Empty
+        explicit_id: null
+  # overrides:
+   #   inference:
+    #    confidence: 0.25
+     #   iou: 0.70

@@ -1,0 +1,101 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment and local settings
+.env
+.env.*
+*.local
+**/config.local.yaml
+**/config.local.yml
+/commands.txt
+/fast.txt
+/arduino.py
+
+# Logs and runtime output
+logs/
+*.log
+runs/
+outputs/
+output/
+3d_camera/research_records/
+Material_level_using_yolo/research_records/
+Run_Experiment/research_records/
+**/research_records/
+depth_measurements.xlsx
+depth_measurements.csv
+yolo_measurements.xlsx
+yolo_measurements.csv
+**/measurements/*/c920/raw/
+**/measurements/*/depth/raw_depth/
+
+# Datasets and generated data
+datasets/
+dataset/
+data/
+Training _Evaluation/
+legacy/
+**/config.backup-*.yaml
+3d_camera/calibration/*.npz
+
+# Model weights and exported engines
+*.pt
+*.onnx
+*.engine
+*.pth
+*.ckpt
+*.tflite
+*.torchscript
+
+# Video files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+*.webm
+*.bag
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.tmp.xlsx
+*.tmp.csv
+*.restore
+*.xlsx.lock
+*.session.lock
+*.yolo_session.lock
+*.offline_yolo.lock
+*.bak
+*.swp
+~$*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local credentials and machine-specific overrides
+*.pem
+*.key
+credentials.json
+secrets.yaml
+secrets.yml

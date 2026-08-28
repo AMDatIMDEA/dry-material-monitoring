@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=68,<82", "wheel>=0.42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "polymer-specimen-vision-system"
+version = "0.1.0"
+description = "Reproducible D405 and YOLO workflows for polymer material-level experiments"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "Mostafa Abd Al Kader" },
+  { name = "Miguel Hernández-del-Valle" },
+  { name = "Maciej Haranczyk" },
+]
+keywords = [
+  "computer vision",
+  "depth camera",
+  "material level",
+  "polymer",
+  "reproducible research",
+  "YOLO segmentation",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Image Processing",
+]
+dependencies = [
+  "matplotlib>=3.8,<4",
+  "numpy>=2.0,<3",
+  "opencv-python!=4.13.0.90,>=4.10,<6",
+  "openpyxl>=3.1,<4",
+  "Pillow>=10.0,<13",
+  "pyrealsense2==2.58.3.10794",
+  "PyYAML>=6.0,<7",
+  "scipy>=1.11,<2",
+  "ultralytics>=8.3,<9",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+analyze-measurements = "measurement_analysis.cli:main"
+material-level-yolo = "material_level_yolo.cli:main"
+process-synchronized-yolo = "material_level_yolo.synchronized_cli:main"
+run-material-experiment = "run_experiment.cli:main"
+tube-measure = "tube_measure.cli:main"
+
+[tool.setuptools]
+packages = [
+  "experiment_records",
+  "material_volume",
+  "set_up",
+  "set_up.center",
+  "material_level_yolo",
+  "run_experiment",
+  "measurement_analysis",
+  "tube_measure",
+]
+
+[tool.setuptools.package-dir]
+experiment_records = "experiment_records"
+material_volume = "3d_camera/material_volume"
+set_up = "3d_camera/set_up"
+"set_up.center" = "3d_camera/set_up/center"
+material_level_yolo = "Material_level_using_yolo/material_level_yolo"
+run_experiment = "Run_Experiment/run_experiment"
+measurement_analysis = "measurements_methods_analyze/measurement_analysis"
+tube_measure = "general_model/src/tube_measure"
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = [
+  "Tests",
+  "3d_camera/tests",
+  "3d_camera/set_up/tests",
+  "3d_camera/set_up/center/tests",
+  "Material_level_using_yolo/tests",
+  "Run_Experiment/tests",
+  "measurements_methods_analyze/tests",
+  "general_model/tests",
+]

@@ -1,0 +1,53 @@
+name: Research validation report
+description: Share a reproducible validation result or cross-laboratory observation.
+title: "[Validation]: "
+labels: [research-validation]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Thank you for testing the system. Report valid and invalid outcomes,
+        release/model/config hashes, and reference methods. Do not share private
+        or unapproved data.
+  - type: input
+    id: version
+    attributes:
+      label: Software release/commit and archive DOI
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Apparatus and frozen setup
+      description: Camera models/firmware, tube geometry, mount, lighting, profiles, calibration, model hash, and compute device.
+    validations:
+      required: true
+  - type: textarea
+    id: design
+    attributes:
+      label: Experimental design and reference
+      description: Independence unit, levels, repeats, materials/lots, reference method, exclusions, and preregistration if any.
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: Results
+      description: Sample counts, invalid rate, errors/intervals, failure modes, and a DOI or safe minimal artifact if public.
+    validations:
+      required: true
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Limitations and interpretation
+    validations:
+      required: true
+  - type: checkboxes
+    id: permissions
+    attributes:
+      label: Data and claims
+      options:
+        - label: Shared data are approved for public release and contain no sensitive identifiers.
+          required: true
+        - label: I distinguish software execution, repeatability, accuracy, and metrological validation.
+          required: true

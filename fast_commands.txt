@@ -1,0 +1,192 @@
+POLYMER SPECIMEN VISION SYSTEM — FAST COMMANDS (WINDOWS POWERSHELL)
+=================================================================
+
+Run commands from a PowerShell terminal opened anywhere inside the Git clone.
+Lines beginning with # are notes. Replace values in the USER VALUES section.
+This file is tracked. Laboratory values belong only in ignored *.local.yaml files.
+
+
+0) FIND THE REPOSITORY AFTER IT HAS MOVED
+-----------------------------------------
+$RepoRoot = git rev-parse --show-toplevel
+Set-Location $RepoRoot
+$Python = Join-Path $RepoRoot ".venv\Scripts\python.exe"
+
+
+1) USER VALUES — EDIT THESE FOR EACH STUDY
+-------------------------------------------
+$OutputRoot = "D:\Research records\Material level study"
+$ExperimentId = "polymer-sync-001"
+$MaterialName = "operator supplied polymer"
+$CapacityMl = 211.527360357
+$BulkDensity = 0.52
+$FullTubeMassG = 109.994227386
+$Session = Join-Path $OutputRoot $ExperimentId
+
+# Capacity and full-tube mass must match the geometry/material actually frozen
+# for the study. Do not copy the example values into a different apparatus.
+
+
+2) CREATE OR REPAIR THE ENVIRONMENT
+------------------------------------
+py -3.11 -m venv .venv
+$Python = Join-Path $RepoRoot ".venv\Scripts\python.exe"
+& $Python -m pip install --upgrade pip
+& $Python -m pip install -e ".[test]"
+& $Python -m pip check
+
+# For GPU use, first install the PyTorch build selected for this workstation at
+# https://pytorch.org/get-started/locally/ and then repeat the editable install.
+# For the exact default-index archived environment instead, use:
+# & $Python -m pip install -r pylock.toml
+# & $Python -m pip install --no-deps -e .
+
+
+3) CREATE LOCAL CONFIGS ON A NEW CLONE (NEVER OVERWRITE EXISTING ONES)
+---------------------------------------------------------------------
+if (-not (Test-Path ".\3d_camera\config.local.yaml")) { Copy-Item ".\3d_camera\config.yaml" ".\3d_camera\config.local.yaml" }
+if (-not (Test-Path ".\Material_level_using_yolo\config.local.yaml")) { Copy-Item ".\Material_level_using_yolo\config.yaml" ".\Material_level_using_yolo\config.local.yaml" }
+if (-not (Test-Path ".\Run_Experiment\config.local.yaml")) { Copy-Item ".\Run_Experiment\config.yaml" ".\Run_Experiment\config.local.yaml" }
+if (-not (Test-Path ".\measurements_methods_analyze\config.local.yaml")) { Copy-Item ".\measurements_methods_analyze\config.yaml" ".\measurements_methods_analyze\config.local.yaml" }
+
+# On a new clone, change Run_Experiment/config.local.yaml -> depth.config to:
+# ../3d_camera/config.local.yaml
+# Keep Material_level_using_yolo/config.local.yaml -> inference.device: auto.
+
+
+4) TEST EVERYTHING (NO CAMERAS REQUIRED)
+-----------------------------------------
+& $Python -m pytest -q
+& $Python ".\3d_camera\run_measurement.py" --config ".\3d_camera\config.yaml" --source synthetic --fill-percent 35 --no-export
+
+
+5) CHECK WHETHER YOLO WILL USE GPU OR CPU
+-----------------------------------------
+& $Python -c "import torch; print('torch:', torch.__version__); print('CUDA usable:', torch.cuda.is_available()); print('selected:', 'cuda:0' if torch.cuda.is_available() else 'cpu'); print('GPU:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'none')"
+
+
+6) D405 SETUP — RUN AFTER A NEW/MOVED CAMERA OR TUBE
+----------------------------------------------------
+& $Python ".\3d_camera\set_up\configure_height.py" --config ".\3d_camera\config.local.yaml"
+& $Python ".\3d_camera\set_up\center\configure_center.py" --config ".\3d_camera\config.local.yaml"
+& $Python ".\3d_camera\validate_setup.py" --config ".\3d_camera\config.local.yaml"
+& $Python ".\3d_camera\calibrate_empty.py" --config ".\3d_camera\config.local.yaml" --source camera
+
+# Close Intel RealSense Viewer before camera commands. Do not move the mount
+# after calibration. Recalibrate after any camera, tube, focus, profile, or
+# mounting change.
+
+
+7) C920 / YOLO SETUP AND MODEL VALIDATION
+-----------------------------------------
+& $Python ".\Material_level_using_yolo\run_offline.py" --config ".\Material_level_using_yolo\config.local.yaml" --list-cameras
+& $Python ".\Material_level_using_yolo\run_offline.py" --config ".\Material_level_using_yolo\config.local.yaml" --profile polymer --validate-model
+
+# Freeze the ROI from one representative image. This atomically updates only
+# the ignored local config. Replace the image path.
+& $Python ".\Material_level_using_yolo\configure_roi.py" --config ".\Material_level_using_yolo\config.local.yaml" --image "D:\Study images\representative.png" --axis top_to_bottom
+
+
+8) NORMAL SYNCHRONIZED EXPERIMENT
+---------------------------------
+& $Python ".\Run_Experiment\run_experiment.py" `
+  --config ".\Run_Experiment\config.local.yaml" `
+  --experiment-id $ExperimentId `
+  --purpose "material-level validation" `
+  --material-name $MaterialName `
+  --total-capacity-ml $CapacityMl `
+  --bulk-density-g-per-ml $BulkDensity `
+  --total-possible-weight-g $FullTubeMassG `
+  --operator-notes "mount, calibration, and lighting frozen" `
+  --output-root $OutputRoot `
+  --yes
+
+# Wait for STATE ARMED. Press c or left-click. Enter fresh reference weight,
+# manual level, and notes for every measurement. Close acquisition before YOLO.
+
+
+9) PROCESS THE SAVED C920 GROUPS WITH YOLO
+------------------------------------------
+$Session = Join-Path $OutputRoot $ExperimentId
+& $Python ".\Material_level_using_yolo\process_synchronized.py" `
+  $Session `
+  --config ".\Material_level_using_yolo\config.local.yaml" `
+  --roi-mode configured
+
+# Deliberate revision only (the previous completed result is retained):
+& $Python ".\Material_level_using_yolo\process_synchronized.py" `
+  $Session `
+  --config ".\Material_level_using_yolo\config.local.yaml" `
+  --roi-mode configured `
+  --force-reprocess
+
+
+10) ANALYZE A COMPLETED SESSION
+-------------------------------
+# Set experiment_directory and output_directory in the ignored analysis config.
+& $Python -m measurement_analysis.cli --config ".\measurements_methods_analyze\config.local.yaml"
+
+
+11) STANDALONE D405 MEASUREMENT
+-------------------------------
+& $Python ".\3d_camera\run_measurement.py" `
+  --config ".\3d_camera\config.local.yaml" `
+  --source camera `
+  --experiment-id $ExperimentId `
+  --purpose "standalone D405 measurement" `
+  --material-name $MaterialName `
+  --total-capacity-ml $CapacityMl `
+  --bulk-density-g-per-ml $BulkDensity `
+  --total-possible-weight-g $FullTubeMassG `
+  --output-root $OutputRoot `
+  --storage-profile research
+
+
+12) STANDALONE YOLO FOLDER MEASUREMENT
+--------------------------------------
+& $Python ".\Material_level_using_yolo\run_offline.py" `
+  --config ".\Material_level_using_yolo\config.local.yaml" `
+  --profile polymer `
+  --roi-mode configured `
+  --acquisition-mode folder `
+  --input "D:\Study images\lot A" `
+  --experiment-id "folder-study-001" `
+  --purpose "saved-image validation" `
+  --material-name $MaterialName `
+  --total-capacity-ml $CapacityMl `
+  --bulk-density-g-per-ml $BulkDensity `
+  --total-possible-weight-g $FullTubeMassG `
+  --output-root $OutputRoot `
+  --yes
+
+
+13) GENERAL MULTI-TUBE PROTOTYPE
+--------------------------------
+& $Python -m tube_measure.cli `
+  --model "D:\Models\multi_tube_best.pt" `
+  --source "D:\Study images\multi tube" `
+  --config ".\general_model\config.example.yaml" `
+  --output ".\general_model\outputs" `
+  --device auto
+
+
+14) BEFORE COMMITTING OR PUBLISHING
+-----------------------------------
+git status --short
+git diff --check
+git grep -n -I -E '[A-Z]:\\Users\\|/Users/|/home/|OneDrive'
+git check-ignore -v -- ".\3d_camera\config.local.yaml" ".\Material_level_using_yolo\config.local.yaml" ".\Run_Experiment\config.local.yaml" ".\measurements_methods_analyze\config.local.yaml"
+& $Python -m pytest -q
+
+# The privacy grep should report only documentation that describes the pattern,
+# never a real username/path. Review ignored files; do not delete research data.
+
+
+15) COMMAND HELP
+----------------
+& $Python ".\3d_camera\run_measurement.py" --help
+& $Python ".\Run_Experiment\run_experiment.py" --help
+& $Python ".\Material_level_using_yolo\run_offline.py" --help
+& $Python ".\Material_level_using_yolo\process_synchronized.py" --help
+& $Python -m measurement_analysis.cli --help
+& $Python -m tube_measure.cli --help
