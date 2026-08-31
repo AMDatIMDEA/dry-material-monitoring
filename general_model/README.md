@@ -12,7 +12,8 @@ The system supports images, image folders, and videos; writes annotated media pl
 
 The central difficulty is not the area formula. It is deciding which independently segmented regions belong to the same physical tube and deciding whether a lone class mask describes a truly full/empty tube or a missed detection.
 
-This implementation uses an enhanced version of the suggested geometric baseline:
+The repository's geometric matching method combines mask compatibility scoring
+with globally optimal one-to-one assignment:
 
 1. Normalize configured class aliases and lightly open/close each mask.
 2. Generate only geometrically compatible Empty–Material candidates. A candidate is scored from horizontal overlap, center-X alignment, per-column interface distance, and vertical order.

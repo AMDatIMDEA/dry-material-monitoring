@@ -1,15 +1,19 @@
 # D405 Camera-Placement Optimizer
 
-## What was implemented
+This document specifies the optimizer's geometry, constraints, outputs, and
+validation boundaries. Operational tube dimensions and camera placement are
+read from the selected configuration at runtime; numerical cases used by the
+test suite are synthetic regression fixtures, not apparatus specifications.
 
-The independent `3d_camera` package now includes an interactive setup
-optimizer:
+## Scope and entry points
+
+Run the interactive setup optimizer from the repository root:
 
 ```powershell
 .\.venv\Scripts\python.exe 3d_camera\set_up\configure_height.py
 ```
 
-The implementation adds:
+The implementation is organized as follows:
 
 - `3d_camera/set_up/configure_height.py`: interactive input, output-mode
   selection, reporting, acceptance,
@@ -23,9 +27,8 @@ The implementation adds:
 - `3d_camera/set_up/tests/test_setup_optimizer.py`: hardware-independent geometry,
   ranking, fallback, custom-distance, and configuration tests.
 
-The existing meaning of `camera.distance_to_rim_mm` was preserved, so
-`calibrate_empty.py`, `run_measurement.py`, and `validate_setup.py` retain their
-current configuration interface.
+`camera.distance_to_rim_mm` denotes the optical-origin-to-rim distance throughout
+`calibrate_empty.py`, `run_measurement.py`, and `validate_setup.py`.
 
 ## Distance definitions
 
@@ -229,37 +232,6 @@ best distances/profile, valid mounting range, measurable fill range, projected
 pixels, geometric mm/pixel, final status, one warning, and the next action.
 `LONG REVIEW` contains all profiles, calculations, model assumptions, and
 failed constraints.
-
-### Hardware-free 58/55/115 mm example
-
-With maximum fill equal to 115 mm, 10% free margin per side, 3 mm centring
-allowance, 2 degree tilt allowance, the current 45-250 mm configured filter
-range, and nominal offline intrinsics, the implementation reports:
-
-| Objective | Profile | Camera to rim | Camera to bottom |
-|---|---|---:|---:|
-| Highest spatial sampling | 1280 x 720 @ 30 FPS | 103 mm | 218 mm |
-| Safest setup | 640 x 360 @ 30 FPS | 97 mm | 212 mm |
-| Best compromise | 1280 x 720 @ 30 FPS | 118 mm | 233 mm |
-
-For the best compromise, approximate visible area is 223.96 x 130.82 mm at
-the full-fill surface and 442.22 x 258.31 mm at the bottom. The limiting
-supported outer diameter is 103.96 mm. Approximate X/Y sampling is
-0.1750/0.1817 mm/pixel at the full-fill surface and 0.3455/0.3588 mm/pixel at
-the bottom.
-
-These numbers are fallback-model results, not connected-camera measurements.
-The actual D405 intrinsics may change the recommendation.
-
-### 59/55/115 mm tube at exactly 65 mm
-
-The regression case uses the same documented fallback model rather than a
-hardcoded exception. For 640 x 360, the nominal surface/bottom distances are
-65-180 mm and the real 59 mm tube fits the horizontal, vertical, and
-conservative stereo-overlap fields. Rim/wall visibility also passes. The
-requested 10% margin, 3 mm centring tolerance, and 2 degree tilt envelope do
-not retain positive vertical safety margin, so the computed status is
-`CONDITIONALLY_USABLE`, not `PHYSICALLY_INVALID`.
 
 ### 6. Accept, override, or save
 

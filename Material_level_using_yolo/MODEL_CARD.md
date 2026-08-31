@@ -1,14 +1,15 @@
 # Model card: material-level segmentation models
 
-This card must be completed for each released weight file. Do not publish or
-cite a model as validated while required fields remain marked **TO COMPLETE**.
+No model weights are distributed with this software release. Before publishing
+a weight file, record its immutable checksum, archive identifier, training
+provenance, evaluation results, and license in a release-specific model card.
 
 ## Model inventory
 
 | Profile | Portable filename | Task | Semantic roles | SHA-256 | Release/archive |
 |---|---|---|---|---|---|
-| powder | `powder_best.pt` | segmentation | `Powder`, `Empty` | **TO COMPLETE** | **TO COMPLETE** |
-| polymer | `polymer_best.pt` | segmentation | `polymer`, `Empty` | **TO COMPLETE** | **TO COMPLETE** |
+| powder | `powder_best.pt` | segmentation | `Powder`, `Empty` | Not published | Not published |
+| polymer | `polymer_best.pt` | segmentation | `polymer`, `Empty` | Not published | Not published |
 
 The runtime reads `model.names` and fails before inference if a configured role
 is missing, ambiguous, duplicated, or mapped to an incompatible explicit ID.
@@ -33,7 +34,7 @@ Historical dataset IDs are documentation only and are not trusted at runtime.
 - Assuming the model generalizes to other laboratories without transfer
   validation.
 
-## Training information — complete before release
+## Training information required for a model release
 
 For each model, report:
 
@@ -49,7 +50,7 @@ For each model, report:
   seeds, early-stopping/model-selection rule, and compute hardware;
 - frozen inference confidence, IoU, NMS, and aggregation thresholds.
 
-## Evaluation — complete before release
+## Evaluation required for a model release
 
 Report results on an independent, frozen test set. Include confidence intervals
 and per-material/per-level strata where defensible:

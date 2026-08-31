@@ -22,6 +22,8 @@ Semantic Versioning once public releases begin.
   directly measured true volume.
 - Made the restrictive D405 licensing boundary prominent and aligned the
   project metadata with beta release status.
+- Made publication documentation self-contained, removed obsolete apparatus
+  examples, and recorded the current model-release status explicitly.
 
 ## [0.1.0]
 

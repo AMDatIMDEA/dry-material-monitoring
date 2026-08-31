@@ -2,10 +2,10 @@
 
 ## Status and authority
 
-This document freezes the stage-1 data design for the material-level study. It
-expands the common Excel contract in `CODEX_PROMPTS_MATERIAL_LEVEL_STUDY.md`
-without changing its column names, order, or meanings. The contract version
-defined here is `1.0.0`.
+This document defines the version `1.0.0` data contract for the material-level
+study. The authoritative executable schema is maintained in
+[`experiment_records/schema.py`](../../experiment_records/schema.py); this
+document explains its column order, meanings, units, and validation rules.
 
 This is a software data contract, not evidence that either measurement method
 is scientifically or metrologically validated.

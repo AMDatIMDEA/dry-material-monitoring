@@ -16,12 +16,11 @@
 - **Maciej Haranczyk:** Conceptualization, Methodology, Supervision, Writing –
   review & editing.
 
-This statement reflects the roles described by the project team. Before a
-paper is submitted, every author should confirm the final role list and author
-order against the target journal's authorship policy. The proposed order above
-recognizes Mostafa Abd Al Kader as the primary technical author. Add the
-corresponding author's institutional email and every author's ORCID to
-`CITATION.cff` when those details are ready for publication.
+This statement records the repository contributors' current roles. Each
+manuscript must apply the target journal's authorship policy, and all listed
+authors must approve its final author order and contribution statement. Add
+the corresponding author's institutional email and each author's ORCID to
+`CITATION.cff` when those details are available for publication.
 
 Contributors who do not meet a journal's authorship criteria can be recognized
 in the paper acknowledgements and in the repository history.

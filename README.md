@@ -76,7 +76,7 @@ are maintained only at the repository root.
 Windows PowerShell and Python 3.11 are the supported acquisition environment:
 
 ```powershell
-git clone <repository-url>
+git clone https://github.com/MostafaATECH/dry-material-monitoring.git
 cd dry-material-monitoring
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
@@ -96,8 +96,8 @@ a workstation-specific CUDA build.
 
 ## Private configuration and non-Git assets
 
-Tracked YAML files are portable examples. Your existing operational values
-have the same filenames with `.local` inserted:
+Tracked YAML files are portable examples. Laboratory-specific operational
+values belong in files with `.local` inserted before the extension:
 
 ```text
 3d_camera/config.local.yaml
@@ -238,7 +238,7 @@ validation. The cameras are software-coordinated, not hardware-triggered.
 
 ## Authorship, citation, and release
 
-The proposed software author order and CRediT statement are in
+The software author list and CRediT contribution statement are in
 [`AUTHORS.md`](AUTHORS.md). Root citation metadata is in
 [`CITATION.cff`](CITATION.cff). Before the public release:
 
