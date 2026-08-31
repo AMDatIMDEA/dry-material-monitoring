@@ -3,6 +3,21 @@
 **RGB/YOLO level estimation • RGB-D bulk-volume reconstruction • synchronized
 multimodal acquisition • method comparison**
 
+<table>
+  <tr>
+    <td width="30%" align="center">
+      <img src="assets/setup%20of%20powder%20machine.jpeg" width="100%" alt="Automated powder-dispensing laboratory setup">
+    </td>
+    <td width="70%" align="center">
+      <img src="assets/depth%20camera%20view%20example.jpeg" width="100%" alt="Intel RealSense D405 aligned depth-camera view with circular measurement region">
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><sub><b>Laboratory setup</b><br>Automated dry-material dispensing station.</sub></td>
+    <td align="center"><sub><b>RGB-D measurement view</b><br>D405-aligned view and circular region used for bulk-volume reconstruction.</sub></td>
+  </tr>
+</table>
+
 Research software for measuring material level and visible bulk volume in a
 polymer laboratory workflow. The repository integrates synchronized camera
 acquisition, Intel RealSense D405 depth reconstruction, offline YOLO
