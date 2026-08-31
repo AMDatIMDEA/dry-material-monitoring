@@ -4,8 +4,7 @@ message: >-
   associated paper when available.
 type: software
 title: >-
-  Polymer Specimen Vision System: Reproducible D405 and YOLO Material-Level
-  Measurement
+  Non-Contact Dry-Material Monitoring for Self-Driving Laboratories
 version: 0.1.0
 authors:
   - family-names: Abd Al Kader
@@ -15,7 +14,7 @@ authors:
   - family-names: Haranczyk
     given-names: Maciej
 abstract: >-
-  A research software system for synchronized laboratory acquisition,
+  Mixed-license research software for synchronized laboratory acquisition,
   Intel RealSense D405 bulk-volume reconstruction, offline YOLO segmentation,
   method-neutral experiment records, and traceable measurement analysis.
 keywords:
@@ -24,4 +23,7 @@ keywords:
   - Intel RealSense D405
   - YOLO segmentation
   - depth reconstruction
+  - dry material monitoring
   - reproducible research
+  - RGB-D
+  - self-driving laboratory

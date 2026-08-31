@@ -1,6 +1,6 @@
 # Multi-tube material measurement
 
-A retained component of the Polymer Specimen Vision System that converts
+A retained component of Dry-Material Monitoring that converts
 Ultralytics YOLO segmentation results into explainable fill measurements for
 images containing multiple transparent tubes. The detector is expected to
 produce two region classes—`Empty` and `Polymer`/`Material`—rather than a

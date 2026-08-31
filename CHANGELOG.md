@@ -15,7 +15,14 @@ Semantic Versioning once public releases begin.
   YOLO inference.
 - Kept generated evidence, calibration data, trained weights, and large local
   research datasets outside Git.
+- Renamed the publication-facing project to `dry-material-monitoring` and the
+  paper-facing title to “Non-Contact Dry-Material Monitoring for Self-Driving
+  Laboratories.”
+- Corrected analysis labels to distinguish mass-based reference volume from
+  directly measured true volume.
+- Made the restrictive D405 licensing boundary prominent and aligned the
+  project metadata with beta release status.
 
 ## [0.1.0]
 
-- Initial integrated research-software release candidate.
+- Initial integrated beta research-software release.

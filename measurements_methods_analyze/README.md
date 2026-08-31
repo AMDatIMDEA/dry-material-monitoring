@@ -1,7 +1,7 @@
 # Measurement methods analysis
 
 This repository component compares three estimates—human/manual, offline YOLO,
-and D405 depth—against the gravimetric/real reference for a `Run_Experiment`
+and D405 depth—against a mass-based volume reference for a `Run_Experiment`
 session. It reads the existing method workbooks without modifying them and
 matches records by the existing `measurement_id` (while also verifying shared
 experiment/reference fields).
@@ -36,21 +36,25 @@ session root. Source files are opened read-only.
 
 ## Reference and inclusion rules
 
-The gravimetric value is always the comparison reference:
+The mass-based volume is always the comparison reference. It is a derived
+comparison quantity, not directly measured true material volume:
 
-1. If `reference_volume_from_weight_ml` is populated, it is used directly.
+1. If `reference_volume_from_weight_ml` is populated, that explicitly recorded
+   mass-derived volume is used directly.
 2. If it is blank and `allow_full_mass_fraction_fallback` is enabled, the tool
    uses only explicitly recorded inputs:
 
    ```text
-   gravimetric reference volume =
+   nominal mass-fraction-based reference volume =
        total_capacity_ml × reference_material_weight_g
        / total_possible_weight_g
    ```
 
-   This assumes `total_possible_weight_g` is the net material mass at the same
-   full-tube capacity and packing condition. The output report labels every row
-   using this assumption. Disable the fallback if that assumption is unsuitable.
+   This fallback is a nominal mass-fraction-based estimate. It assumes
+   `total_possible_weight_g` is the net material mass at the same full-tube
+   capacity and packing condition; it is not a direct measurement of true
+   volume. The output report records the reference source for every row.
+   Disable the fallback if that assumption is unsuitable.
 
 No value is inferred from a material name. Missing or non-finite inputs stay
 missing. A mass greater than the recorded full mass is rejected. YOLO and D405
@@ -65,7 +69,8 @@ when the volume field is absent. Missing and invalid comparisons are listed in
 Each figure is written as high-resolution PNG and vector PDF:
 
 1. **Estimated versus reference volume** — Human, YOLO, and D405 estimates
-   against gravimetric volume. The dashed `y=x` line represents ideal equality.
+   against the mass-based reference volume. The dashed `y=x` line represents
+   ideal equality.
 2. **Signed error versus reference fill** — `estimate − reference`; positive
    values overestimate and negative values underestimate. The zero line marks
    no error.
@@ -79,7 +84,7 @@ Each figure is written as high-resolution PNG and vector PDF:
    Reference values within `grouping_tolerance_ml` form a repeat group. A
    single-observation group has no estimable SD and is drawn with a zero-length
    bar, not claimed as demonstrated repeatability.
-6. **Measurement-by-measurement volume comparison** — shows the gravimetric
+6. **Measurement-by-measurement volume comparison** — shows the mass-based
    reference, human visual estimate, YOLO estimate, and D405 depth estimate in
    measurement-index order. Markers are connected by thin lines only to help
    visually track consecutive experimental measurements; the lines do not

@@ -2,7 +2,7 @@
 
 ## Scope
 
-The Polymer Specimen Vision System is one research repository with several
+Dry-Material Monitoring is one research repository with several
 method-specific boundaries. It acquires synchronized evidence, estimates
 material volume by two independent computer-vision methods, stores both methods
 under a common record contract, and produces descriptive comparison outputs.

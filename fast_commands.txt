@@ -1,4 +1,4 @@
-POLYMER SPECIMEN VISION SYSTEM — FAST COMMANDS (WINDOWS POWERSHELL)
+DRY-MATERIAL MONITORING — FAST COMMANDS (WINDOWS POWERSHELL)
 =================================================================
 
 Run commands from a PowerShell terminal opened anywhere inside the Git clone.

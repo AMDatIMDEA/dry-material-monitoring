@@ -1,4 +1,4 @@
-# License scope
+# Mixed-license scope — not wholly open source
 
 This repository currently has mixed licensing:
 
@@ -19,5 +19,10 @@ release, institutional or legal review should determine whether the D405
 component can be relicensed and whether every model/data/dependency use is
 compatible with the intended research and distribution model. Record the
 decision in release notes; do not silently replace a restrictive license.
+
+Until that review authorizes a change, do not describe the complete repository
+or integrated distribution as MIT-licensed or open source. Researchers may use
+the permissively licensed portions under the root MIT terms, but they must
+obtain prior written permission for the `3d_camera/` component.
 
 This file documents repository scope and is not legal advice.

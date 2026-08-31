@@ -1,4 +1,7 @@
-# Polymer Specimen Vision System
+# Non-Contact Dry-Material Monitoring for Self-Driving Laboratories
+
+**RGB/YOLO level estimation • RGB-D bulk-volume reconstruction • synchronized
+multimodal acquisition • method comparison**
 
 Research software for measuring material level and visible bulk volume in a
 polymer laboratory workflow. The repository integrates synchronized camera
@@ -6,11 +9,17 @@ acquisition, Intel RealSense D405 depth reconstruction, offline YOLO
 segmentation, traceable records, and method-comparison analysis in one
 installable project.
 
-> **Research status:** release candidate. Software tests verify implementation
-> behavior; they do not establish accuracy, traceability, uncertainty, or
+> **Research status:** beta research release (`v0.1.0`). Software tests verify
+> implementation behavior; they do not establish accuracy, traceability, uncertainty, or
 > metrological validation. Use the validation plan and report the frozen
 > configuration, calibration, model hashes, hardware, and software release for
 > every scientific result.
+
+> **License boundary:** this repository is mixed-license research software and
+> is not wholly open source. The `3d_camera/` component currently requires prior
+> written permission for use, copying, modification, or distribution. See
+> [`LICENSES.md`](LICENSES.md) before using or redistributing the integrated
+> system.
 
 ## System overview
 
@@ -53,7 +62,7 @@ Windows PowerShell and Python 3.11 are the supported acquisition environment:
 
 ```powershell
 git clone <repository-url>
-cd polymer-specimen-vision-system
+cd dry-material-monitoring
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install -e ".[test]"
@@ -227,7 +236,8 @@ The proposed software author order and CRediT statement are in
 
 ## Licensing
 
-The root software is distributed under the [MIT License](LICENSE).
+Repository content outside more specifically licensed paths is distributed
+under the root [MIT License](LICENSE).
 [`3d_camera/LICENSE`](3d_camera/LICENSE) contains a distinct restrictive
 component license and takes precedence for that directory. It has deliberately
 not been relicensed; institutional authorization is required before changing

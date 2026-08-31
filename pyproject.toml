@@ -3,9 +3,9 @@ requires = ["setuptools>=68,<82", "wheel>=0.42"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "polymer-specimen-vision-system"
+name = "dry-material-monitoring"
 version = "0.1.0"
-description = "Reproducible D405 and YOLO workflows for polymer material-level experiments"
+description = "Non-contact RGB, YOLO, and RGB-D monitoring of dry materials for self-driving laboratories"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
@@ -16,17 +16,21 @@ authors = [
 keywords = [
   "computer vision",
   "depth camera",
+  "dry material monitoring",
   "material level",
   "polymer",
   "reproducible research",
+  "RGB-D",
+  "self-driving laboratory",
   "YOLO segmentation",
 ]
 classifiers = [
-  "Development Status :: 3 - Alpha",
+  "Development Status :: 4 - Beta",
   "Intended Audience :: Science/Research",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.11",
   "Topic :: Scientific/Engineering :: Image Processing",
+  "License :: Other/Proprietary License",
 ]
 dependencies = [
   "matplotlib>=3.8,<4",

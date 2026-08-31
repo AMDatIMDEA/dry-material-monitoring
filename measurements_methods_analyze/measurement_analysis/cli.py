@@ -16,7 +16,12 @@ DEFAULT_CONFIG = Path(__file__).resolve().parents[1] / "config.yaml"
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Compare human, YOLO, and D405 volumes against gravimetric reference measurements.")
+    parser = argparse.ArgumentParser(
+        description=(
+            "Compare human, YOLO, and D405 volumes against mass-based "
+            "reference volumes."
+        )
+    )
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     return parser.parse_args(argv)
 
@@ -43,4 +48,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

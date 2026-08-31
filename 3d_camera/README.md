@@ -1,9 +1,14 @@
 # D405 Material-Level and Bulk-Volume Measurement
 
-This component of the Polymer Specimen Vision System uses the Intel RealSense
+This component of Dry-Material Monitoring uses the Intel RealSense
 D405 depth stream to reconstruct the visible top surface of material inside a
 known cylindrical tube, integrate the occupied bulk volume, calculate the
 remaining empty volume, and raise a configurable refill warning.
+
+> **Restricted component:** [`LICENSE`](LICENSE) requires prior written
+> permission to use, copy, modify, or distribute this directory. The root MIT
+> license does not override these terms. See the repository
+> [`LICENSES.md`](../LICENSES.md) for the complete boundary.
 
 No custom dataset or trained AI model is required for this fixed, known tube geometry. The depth measurement itself is the useful signal; RGB is saved only as a diagnostic snapshot.
 

@@ -47,7 +47,7 @@ def _comparison_plot(result: AnalysisResult, config: AnalysisConfig):
         ax.plot([low, high], [low, high], color="black", linestyle="--", linewidth=1.2, label="Ideal y = x")
         ax.set_xlim(low, high)
         ax.set_ylim(low, high)
-    _finish(ax, "Reference (gravimetric) material volume (mL)", "Estimated material volume (mL)", "Comparison of Estimated and Reference Material Volumes", available)
+    _finish(ax, "Mass-based reference material volume (mL)", "Estimated material volume (mL)", "Comparison of Estimated and Reference Material Volumes", available)
     return fig
 
 
@@ -55,7 +55,7 @@ def _signed_error_plot(result: AnalysisResult, config: AnalysisConfig):
     fig, ax = _figure(config)
     available = _plot_methods(ax, result, lambda item: item.reference_volume_ml, lambda item: item.error_ml)
     ax.axhline(0.0, color="black", linestyle="--", linewidth=1.2, label="Zero error")
-    _finish(ax, "Reference (gravimetric) material volume (mL)", "Signed error: estimate − reference (mL)", "Estimation Error as a Function of Reference Fill Level", available)
+    _finish(ax, "Mass-based reference material volume (mL)", "Signed error: estimate − reference (mL)", "Estimation Error as a Function of Reference Fill Level", available)
     return fig
 
 
@@ -126,7 +126,7 @@ def _repeatability_plot(result: AnalysisResult, config: AnalysisConfig):
         ax.errorbar(centers, means, yerr=errors, color=COLORS[method], marker=MARKERS[method], linewidth=1.4, capsize=3, label=f"{method} mean ± SD")
     if not any_data:
         _no_data(ax)
-    _finish(ax, "Reference (gravimetric) material volume (mL)", "Measured material volume (mL)", "Repeatability Across Reference Fill Levels", any_data, legend=True)
+    _finish(ax, "Mass-based reference material volume (mL)", "Measured material volume (mL)", "Repeatability Across Reference Fill Levels", any_data, legend=True)
     return fig
 
 
@@ -151,7 +151,7 @@ def _measurement_sequence_plot(result: AnalysisResult, config: AnalysisConfig):
         marker="D",
         markersize=4.5,
         linewidth=1.0,
-        label="Gravimetric Reference",
+        label="Mass-Based Reference",
     )
     lookup = {
         (item.measurement_id, item.method): item.estimate_volume_ml
