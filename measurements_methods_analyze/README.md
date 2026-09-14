@@ -9,6 +9,11 @@ experiment/reference fields).
 This is descriptive software analysis. It does not establish metrological or
 scientific validation and does not change any acquisition or estimation code.
 
+> **Manuscript scope:** this general-purpose utility was not used to generate
+> the manuscript's final statistical analysis, tables, or figures. It remains
+> available for exploratory, traceable comparison of compatible experiment
+> records and is not a paper-specific analysis pipeline.
+
 ## Configure and run
 
 Copy [`config.yaml`](config.yaml) to the ignored `config.local.yaml` and change

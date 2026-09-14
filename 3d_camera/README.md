@@ -163,7 +163,13 @@ instead of treating a previously used distance/profile as universal.
    - Bin the surface into a 1 mm X/Y grid.
    - Use a median height per grid cell.
    - Replace isolated spatial spikes with a local median.
-   - Fill small internal gaps by nearest valid surface and extrapolate the clean inner surface into the excluded wall annulus.
+   - Assign missing in-circle cells the value of the nearest cleaned, observed
+     cell in the reliable region. This nearest-neighbour imputation fills
+     internal gaps and the excluded wall annulus; it is not a fitted radial
+     extrapolation.
+   - Compute direct coverage and maximum internal-hole radius only inside the
+     reliable region, before filling. The excluded annulus is therefore not
+     counted as measured surface or as an internal hole.
    - Save the map as NumPy, PNG, and PLY files.
 
 5. **Volume and decision**
@@ -359,7 +365,8 @@ Each accepted measurement creates a timestamped folder under `output` containing
 
 - `result.json`: volumes, fill percentage, warning state, and quality metrics.
 - `height_map_mm.npy`: metric 3D surface height grid in millimetres.
-- `height_map.png`: top-view height visualization; darker edge/gap cells were extrapolated.
+- `height_map.png`: top-view height visualization; missing edge/gap cells were
+  filled from the nearest cleaned, observed reliable-region cell.
 - `material_surface_mm.ply`: 3D surface in tube coordinates, suitable for MeshLab or CloudCompare.
 - `color_snapshot.png`: latest diagnostic color image when enabled.
 

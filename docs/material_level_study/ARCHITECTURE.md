@@ -20,7 +20,6 @@ method's measurements.
 | `Material_level_using_yolo` | Saved-image model validation/inference, ROI/interface estimation, image aggregation, YOLO evidence and record completion. | Live synchronized inference, D405 numerical internals, comparison conclusions. |
 | `experiment_records` | Common schema, measurement identity, validation, derived conservation fields, provenance, locking, atomic XLSX/CSV persistence. | Camera, model, estimator, or statistical logic. |
 | `measurements_methods_analyze` | Read-only alignment of completed records, descriptive statistics, exclusions, tables, and plots. | Mutation of acquisition records or claims of validation. |
-| `general_model` | Experimental general multi-tube mask matching and fill analysis. | The frozen paper workflow unless explicitly validated and adopted later. |
 
 ## Execution flow
 

@@ -1,0 +1,48 @@
+# Sanitized paper provenance record; not a directly executable runtime config.
+material: Wood powder
+archived_session: wood_powder_E4
+total_capacity_ml: 197.0406912331518
+archived_hashes:
+  depth_effective_config_sha256: 5c5365fa99c60ff24e6e4f95a9578d18b5847506b677dafd0699f55d6962d487
+  depth_calibration_sha256: 2a5a9f327ed54f167e867249029942d4fbd8de14eab2dacbde9b0435f9d92148
+  yolo_effective_config_sha256: de962a971fa8555549c78a5737bb804e6fc2c080d169b7bc84bd104b3e7db870
+  yolo_model_sha256: a5d46126319ccce7e59e73d30c7b8983b05ac9c5be3c92963ec5125a066ba235
+d405:
+  tube:
+    outer_diameter_mm: 63
+    wall_thickness_mm: 3.5
+    inner_diameter_mm: 56.0
+    usable_height_mm: 80
+    wall_edge_exclusion_mm: 2.0
+  camera:
+    distance_to_rim_mm: 118
+    depth_width: 1280
+    depth_height: 720
+    fps: 30
+  detection_roi:
+    center_x_px: 667.0
+    center_y_px: 373.0
+    diameter_mm: 56.0
+  fusion:
+    burst_frames: 45
+  reconstruction:
+    grid_cell_size_mm: 1.0
+    minimum_surface_coverage: 0.6
+    maximum_internal_hole_radius_mm: 10.0
+yolo:
+  expected_task: segment
+  estimation_mode: segmentation_interface
+  inference:
+    confidence: 0.75
+    iou: 0.5
+    image_size: 1024
+    max_detections: 50
+  tube_roi:
+    usage_mode: whole_image
+    axis: top_to_bottom
+  camera:
+    capture_count: 6
+    capture_interval_seconds: 0.2
+  aggregation:
+    maximum_spread_percentage_points: 8.0
+    minimum_valid_images: 1

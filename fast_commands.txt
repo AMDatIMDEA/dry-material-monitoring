@@ -160,17 +160,7 @@ $Session = Join-Path $OutputRoot $ExperimentId
   --yes
 
 
-13) GENERAL MULTI-TUBE PROTOTYPE
---------------------------------
-& $Python -m tube_measure.cli `
-  --model "D:\Models\multi_tube_best.pt" `
-  --source "D:\Study images\multi tube" `
-  --config ".\general_model\config.example.yaml" `
-  --output ".\general_model\outputs" `
-  --device auto
-
-
-14) BEFORE COMMITTING OR PUBLISHING
+13) BEFORE COMMITTING OR PUBLISHING
 -----------------------------------
 git status --short
 git diff --check
@@ -182,11 +172,10 @@ git check-ignore -v -- ".\3d_camera\config.local.yaml" ".\Material_level_using_y
 # never a real username/path. Review ignored files; do not delete research data.
 
 
-15) COMMAND HELP
+14) COMMAND HELP
 ----------------
 & $Python ".\3d_camera\run_measurement.py" --help
 & $Python ".\Run_Experiment\run_experiment.py" --help
 & $Python ".\Material_level_using_yolo\run_offline.py" --help
 & $Python ".\Material_level_using_yolo\process_synchronized.py" --help
 & $Python -m measurement_analysis.cli --help
-& $Python -m tube_measure.cli --help

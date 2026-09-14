@@ -25,7 +25,6 @@ body:
         - Run_Experiment
         - experiment_records
         - measurements_methods_analyze
-        - general_model
         - installation or CI
     validations:
       required: true

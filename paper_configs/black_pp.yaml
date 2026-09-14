@@ -1,0 +1,48 @@
+# Sanitized paper provenance record; not a directly executable runtime config.
+material: Black PP
+archived_session: black_polymer_E2
+total_capacity_ml: 211.5273603570178
+archived_hashes:
+  depth_effective_config_sha256: 09aac3a5920f98aed14f311dd20448e41b80bb2efd587a30c9717e8454277345
+  depth_calibration_sha256: 7d1744ed1c6b264ab45e105e895493dfd1fe545e628893347ddc416305d96c9e
+  yolo_effective_config_sha256: 9ae124c189a7c110e1817ee041ef0d13fe9912eb8607a87ef52e247b40bcc58c
+  yolo_model_sha256: a7d8f6e4e02039bb7c35d03773c66ee97a5f90f4f20c6707ad32a92666634b64
+d405:
+  tube:
+    outer_diameter_mm: 50
+    wall_thickness_mm: 2.5
+    inner_diameter_mm: 45.0
+    usable_height_mm: 133
+    wall_edge_exclusion_mm: 2.0
+  camera:
+    distance_to_rim_mm: 112.7
+    depth_width: 1280
+    depth_height: 720
+    fps: 30
+  detection_roi:
+    center_x_px: 660.0
+    center_y_px: 378.0
+    diameter_mm: 45.0
+  fusion:
+    burst_frames: 45
+  reconstruction:
+    grid_cell_size_mm: 1.0
+    minimum_surface_coverage: 0.6
+    maximum_internal_hole_radius_mm: 10.0
+yolo:
+  expected_task: segment
+  estimation_mode: segmentation_interface
+  inference:
+    confidence: 0.60
+    iou: 0.5
+    image_size: 1024
+    max_detections: 50
+  tube_roi:
+    usage_mode: whole_image
+    axis: top_to_bottom
+  camera:
+    capture_count: 6
+    capture_interval_seconds: 0.2
+  aggregation:
+    maximum_spread_percentage_points: 8.0
+    minimum_valid_images: 1

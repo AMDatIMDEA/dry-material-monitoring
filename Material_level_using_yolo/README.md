@@ -87,8 +87,8 @@ profile:
 .\.venv\Scripts\python.exe .\Run_Experiment\run_experiment.py `
   --experiment-id polymer-sync-001 `
   --purpose "deferred synchronized material-level study" `
-  --material-name Powder `
-  --total-capacity-ml 211.527360357 `
+  --material-name MCC `
+  --total-capacity-ml 197.040691233 `
   --output-root "C:\Research records\Material level étude" `
   --yes
 ```
@@ -401,7 +401,11 @@ selects `material_and_empty` when present, while other ties remain invalid.
 Disagreeing patterns receive `class_pattern_disagrees_with_majority`. Six
 unanimous material-only frames use 100% and six unanimous Empty-only frames use
 0%; otherwise the final percentage is the arithmetic mean of valid retained
-percentages. One retained image is allowed. P90-P10 spread,
+percentages. One retained image is allowed. After filtering, the group-level
+P90-P10 spread is calculated over accepted percentages; a value strictly above
+`maximum_spread_percentage_points` invalidates the group, while equality
+passes. This is distinct from per-image column-interface spread, which is only
+a diagnostic. Group spread,
 total/retained/rejected counts, patterns, individual
 percentages, and all reasons remain in `yolo_image_details`, `image_details.csv`,
 and `result.json`. Invalid common rows preserve estimate fields as blanks,

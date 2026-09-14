@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68,<82", "wheel>=0.42"]
+requires = ["setuptools>=77,<82", "wheel>=0.42"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,6 +8,8 @@ version = "0.1.0"
 description = "Non-contact RGB, YOLO, and RGB-D monitoring of dry materials for self-driving laboratories"
 readme = "README.md"
 requires-python = ">=3.11"
+license = "MIT AND LicenseRef-3D-Camera-Restricted"
+license-files = ["LICENSE", "3d_camera/LICENSE"]
 authors = [
   { name = "Mostafa Abd Al Kader" },
   { name = "Miguel Hernández-del-Valle" },
@@ -30,7 +32,6 @@ classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.11",
   "Topic :: Scientific/Engineering :: Image Processing",
-  "License :: Other/Proprietary License",
 ]
 dependencies = [
   "matplotlib>=3.8,<4",
@@ -44,6 +45,10 @@ dependencies = [
   "ultralytics>=8.3,<9",
 ]
 
+[project.urls]
+Repository = "https://github.com/AMDatIMDEA/dry-material-monitoring"
+"Zenodo deposition" = "https://zenodo.org/uploads/22697983"
+
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]
 
@@ -52,7 +57,6 @@ analyze-measurements = "measurement_analysis.cli:main"
 material-level-yolo = "material_level_yolo.cli:main"
 process-synchronized-yolo = "material_level_yolo.synchronized_cli:main"
 run-material-experiment = "run_experiment.cli:main"
-tube-measure = "tube_measure.cli:main"
 
 [tool.setuptools]
 packages = [
@@ -63,7 +67,6 @@ packages = [
   "material_level_yolo",
   "run_experiment",
   "measurement_analysis",
-  "tube_measure",
 ]
 
 [tool.setuptools.package-dir]
@@ -74,7 +77,6 @@ set_up = "3d_camera/set_up"
 material_level_yolo = "Material_level_using_yolo/material_level_yolo"
 run_experiment = "Run_Experiment/run_experiment"
 measurement_analysis = "measurements_methods_analyze/measurement_analysis"
-tube_measure = "general_model/src/tube_measure"
 
 [tool.pytest.ini_options]
 addopts = "-ra"
@@ -86,5 +88,4 @@ testpaths = [
   "Material_level_using_yolo/tests",
   "Run_Experiment/tests",
   "measurements_methods_analyze/tests",
-  "general_model/tests",
 ]

@@ -3,21 +3,22 @@
 schema_version: 1
 
 tube:
-  # NOTE: 58 - 2*3 = 52 mm, not 55 mm. The algorithm uses inner_diameter_mm
+  # NOTE: 63 - 2*3.5 = 56 mm. The algorithm uses inner_diameter_mm
   # directly because that is the dimension that controls usable volume.
-  outer_diameter_mm: 50
-  wall_thickness_mm: 2.5
-  inner_diameter_mm: 45.0
+  outer_diameter_mm: 63
+  wall_thickness_mm: 3.5
+  inner_diameter_mm: 56.0
   # This must be the usable INTERNAL height, from the inner bottom to the fill limit.
-  usable_height_mm: 133
-  # Ignore depth close to the transparent wall, then extrapolate the nearby surface
-  # into this annulus. Increase this if the wall creates many false depths.
+  usable_height_mm: 80
+  # Ignore depth close to the transparent wall. After quality metrics are
+  # calculated on the reliable region, nearest cleaned reliable-region grid
+  # values are assigned to this unmeasured annulus for volume integration.
   wall_edge_exclusion_mm: 2.0
   geometry_warning_tolerance_mm: 0.5
 
 camera:
   serial_number: null
-  distance_to_rim_mm: 114
+  distance_to_rim_mm: 118
   depth_width: 1280
   depth_height: 720
   fps: 30
@@ -69,8 +70,8 @@ fusion:
 calibration:
   file: calibration/empty_tube_calibration.npz
   # Legacy centre fields remain supported. New selections are stored below.
-  center_x_px: 664.0
-  center_y_px: 373.0
+  center_x_px: 685.0
+  center_y_px: 372.0
   plane_fit_radius_fraction: 0.72
   minimum_plane_coverage: 0.55
   maximum_plane_rms_mm: 1.5
@@ -83,10 +84,10 @@ calibration:
 
 detection_roi:
   # Native processed depth-frame coordinates. Run set_up/center/configure_center.py.
-  center_x_px: 664.0
-  center_y_px: 373.0
+  center_x_px: 685.0
+  center_y_px: 372.0
   # Must match tube.inner_diameter_mm; physical geometry is configured in mm.
-  diameter_mm: 45.0
+  diameter_mm: 56.0
   free_image_margin_percent: 0.0
   frame_width_px: 1280
   frame_height_px: 720
@@ -101,7 +102,7 @@ detection_roi:
 reconstruction:
   grid_cell_size_mm: 1.0
   minimum_surface_coverage: 0.60
-  maximum_internal_hole_radius_mm: 10.0
+  maximum_internal_hole_radius_mm: 15.0
   local_median_kernel: 3
   spatial_outlier_threshold_mm: 6.0
   physical_height_tolerance_mm: 4.0

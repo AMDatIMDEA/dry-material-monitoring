@@ -20,6 +20,11 @@ component can be relicensed and whether every model/data/dependency use is
 compatible with the intended research and distribution model. Record the
 decision in release notes; do not silently replace a restrictive license.
 
+Python source and binary distributions include both the root `LICENSE` and
+`3d_camera/LICENSE`. Their inclusion preserves notice of the mixed-license
+boundary; it does not extend the root MIT grant into `3d_camera/` or relicense
+that component.
+
 Until that review authorizes a change, do not describe the complete repository
 or integrated distribution as MIT-licensed or open source. Researchers may use
 the permissively licensed portions under the root MIT terms, but they must

@@ -57,8 +57,10 @@ calibration captured with incompatible intrinsics, dimensions, or centre.
 4. Reject points outside the physical height interval and the reliable inner radius.
 5. Bin surface heights into an X/Y grid using the median per occupied cell.
 6. Replace isolated spatial outliers with a local median.
-7. Fill internal missing cells and the excluded wall annulus by nearest measured
-   surface extrapolation.
+7. Assign each remaining in-circle missing cell the value of its nearest
+   cleaned, observed cell from the reliable region. This nearest-neighbour
+   imputation covers both internal gaps and the excluded wall annulus; it is not
+   a separately fitted radial or wall-surface extrapolation.
 8. Clip reconstructed height to `[0, usable_height]` and integrate over the known
    circular cross-section.
 
@@ -72,6 +74,11 @@ The code evaluates this with an equal-area Cartesian midpoint grid and scales th
 mean in-circle height by the exact configured cylinder capacity. Constant-height
 surfaces are therefore exact apart from depth/calibration error; nonuniform
 surfaces carry grid and interpolation error.
+
+Surface coverage and maximum internal-hole radius are calculated only within
+the reliable radius, before the excluded wall annulus is filled. Consequently,
+the annulus contributes imputed values to the final integral but is neither
+claimed as directly measured surface nor counted as an internal data hole.
 
 ## Quality and decision logic
 

@@ -100,7 +100,6 @@ structural gate fails:
 - a detected role confidence is below its threshold;
 - a detected role has no usable mask geometry;
 - single-class support is tiny, laterally implausible, or disconnected from its expected tube end;
-- column-interface spread is excessive;
 - the dominant row sequence is reversed or has multiple transitions; or
 - present material/empty support lacks the minimum dominant-row run.
 
@@ -141,10 +140,15 @@ unanimous semantic endpoint rule is recorded through the class-pattern counts,
 retained flags, and accepted per-image percentages.
 
 Let the geometrically valid, majority-pattern percentages be `p_i`. The group
-candidate is the arithmetic mean `sum(p_i) / n`; group spread is
-`P90(p_i) - P10(p_i)`. One retained image is permitted, while `n` is always
-recorded so it can be treated as weaker evidence later. The group is invalid if
-no valid image remains or retained spread exceeds its threshold. Every image,
+candidate is the arithmetic mean `sum(p_i) / n`. Only after majority-pattern
+and per-image validity filtering, the implementation calculates the group-level
+spread `P90(p_i) - P10(p_i)` over those accepted percentages. The group is
+invalid when this value is strictly greater than
+`maximum_spread_percentage_points`; equality passes. One retained image is
+permitted and consequently has zero group spread, while `n` is always recorded
+so it can be treated as weaker evidence later. This group-level gate is distinct
+from per-image column-interface spread, which is saved as a diagnostic and does
+not reject an image. A group with no accepted image is invalid. Every image,
 pattern, percentage, retained flag, filter reason, and geometric rejection
 reason remains in the detail table and structured evidence.
 
