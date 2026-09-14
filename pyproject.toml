@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dry-material-monitoring"
-version = "0.1.0"
+version = "0.1.1"
 description = "Non-contact RGB, YOLO, and RGB-D monitoring of dry materials for self-driving laboratories"
 readme = "README.md"
 requires-python = ">=3.11"
-license = "MIT AND LicenseRef-3D-Camera-Restricted"
+license = "MIT"
 license-files = ["LICENSE", "3d_camera/LICENSE"]
 authors = [
   { name = "Mostafa Abd Al Kader" },

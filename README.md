@@ -24,17 +24,15 @@ acquisition, Intel RealSense D405 depth reconstruction, offline YOLO
 segmentation, traceable records, and method-comparison analysis in one
 installable project.
 
-> **Research status:** beta research release (`v0.1.0`). Software tests verify
+> **Research status:** beta research release (`v0.1.1`). Software tests verify
 > implementation behavior; they do not establish accuracy, traceability, uncertainty, or
 > metrological validation. Use the validation plan and report the frozen
 > configuration, calibration, model hashes, hardware, and software release for
 > every scientific result.
 
-> **License boundary:** this repository is mixed-license research software and
-> is not wholly open source. The `3d_camera/` component currently requires prior
-> written permission for use, copying, modification, or distribution. See
-> [`LICENSES.md`](LICENSES.md) before using or redistributing the integrated
-> system.
+> **License:** repository software is released under the MIT License. Model
+> weights, datasets, recordings, and third-party dependencies retain their own
+> licenses and terms; see [`LICENSES.md`](LICENSES.md).
 
 ## System overview
 
@@ -264,14 +262,12 @@ and DOI after publication. Before the public release:
 
 ## Licensing
 
-Repository content outside more specifically licensed paths is distributed
-under the root [MIT License](LICENSE).
-[`3d_camera/LICENSE`](3d_camera/LICENSE) contains a distinct restrictive
-component license and takes precedence for that directory. It has deliberately
-not been relicensed; institutional authorization is required before changing
-it. Review the Ultralytics/model licensing terms and all third-party assets
+Repository software, including the `3d_camera/` component, is distributed under
+the [MIT License](LICENSE). The `3d_camera/LICENSE` file preserves the same MIT
+terms and names Mostafa Abd Al Kader and IMDEA Materials Institute as copyright
+holders. Review the Ultralytics/model licensing terms and all third-party assets
 before a public or commercial release. See [`LICENSES.md`](LICENSES.md) for the
-current scope boundaries.
+remaining scope boundaries.
 
 ## Contributing
 

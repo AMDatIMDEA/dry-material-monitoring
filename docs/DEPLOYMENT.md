@@ -52,7 +52,7 @@ repository becomes public and rotate any exposed secret.
   paper DOI are current.
 - The paper and repository use the same geometry, model hashes, thresholds,
   exclusion rules, software version, and data dictionary.
-- The root MIT license and the distinct `3d_camera/LICENSE` have been reviewed
+- The root MIT license and the matching `3d_camera/LICENSE` have been reviewed
   by the institution; third-party model and dependency licenses are documented.
 - Public sample data are de-identified, consented/approved, checksum-verified,
   and small enough for the selected archive.

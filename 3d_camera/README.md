@@ -5,10 +5,10 @@ D405 depth stream to reconstruct the visible top surface of material inside a
 known cylindrical tube, integrate the occupied bulk volume, calculate the
 remaining empty volume, and raise a configurable refill warning.
 
-> **Restricted component:** [`LICENSE`](LICENSE) requires prior written
-> permission to use, copy, modify, or distribute this directory. The root MIT
-> license does not override these terms. See the repository
-> [`LICENSES.md`](../LICENSES.md) for the complete boundary.
+> **License:** this component is distributed under the MIT License in
+> [`LICENSE`](LICENSE). Third-party dependencies, models, and data retain their
+> own licenses and terms. See the repository [`LICENSES.md`](../LICENSES.md) for
+> the complete boundary.
 
 No custom dataset or trained AI model is required for this fixed, known tube geometry. The depth measurement itself is the useful signal; RGB is saved only as a diagnostic snapshot.
 

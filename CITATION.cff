@@ -5,7 +5,7 @@ message: >-
 type: software
 title: >-
   Non-Contact Dry-Material Monitoring for Self-Driving Laboratories
-version: 0.1.0
+version: 0.1.1
 authors:
   - family-names: Abd Al Kader
     given-names: Mostafa
@@ -14,7 +14,7 @@ authors:
   - family-names: Haranczyk
     given-names: Maciej
 abstract: >-
-  Mixed-license research software for synchronized laboratory acquisition,
+  MIT-licensed research software for synchronized laboratory acquisition,
   Intel RealSense D405 bulk-volume reconstruction, offline YOLO segmentation,
   method-neutral experiment records, and traceable measurement analysis.
 repository-code: https://github.com/AMDatIMDEA/dry-material-monitoring

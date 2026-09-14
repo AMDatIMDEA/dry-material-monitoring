@@ -1,33 +1,26 @@
-# Mixed-license scope — not wholly open source
+# License scope
 
-This repository currently has mixed licensing:
+Repository software, including the entire `3d_camera/` component, is released
+under the MIT License. The root [`LICENSE`](LICENSE) and
+[`3d_camera/LICENSE`](3d_camera/LICENSE) carry the same terms and identify
+Mostafa Abd Al Kader and IMDEA Materials Institute as copyright holders for the
+software covered by those files.
 
-- The root [`LICENSE`](LICENSE) is the MIT License for repository content not
-  covered by a more specific license.
-- [`3d_camera/LICENSE`](3d_camera/LICENSE) applies to the entire `3d_camera/`
-  directory and currently grants no permission to copy, modify, distribute,
-  sublicense, or use that component without prior written permission from the
-  copyright holder. It takes precedence over the root license for that path.
+The repository is therefore open-source software under MIT, subject to the
+separate terms of third-party and research assets described below.
+
 - Model weights, datasets, recordings, pretrained checkpoints, and other
   separately distributed research assets retain their own terms. They are not
   licensed merely because a configuration references them.
 - Dependencies such as Intel RealSense, PyTorch, Ultralytics, OpenCV, and their
   transitive packages retain their respective upstream licenses and terms.
 
-The integrated install does not erase these boundaries. Before a public
-release, institutional or legal review should determine whether the D405
-component can be relicensed and whether every model/data/dependency use is
-compatible with the intended research and distribution model. Record the
-decision in release notes; do not silently replace a restrictive license.
+The integrated install does not erase these boundaries. Review the terms of
+every model, dataset, recording, and dependency before redistribution or
+commercial use; the MIT license for repository software does not relicense
+those separate assets.
 
 Python source and binary distributions include both the root `LICENSE` and
-`3d_camera/LICENSE`. Their inclusion preserves notice of the mixed-license
-boundary; it does not extend the root MIT grant into `3d_camera/` or relicense
-that component.
-
-Until that review authorizes a change, do not describe the complete repository
-or integrated distribution as MIT-licensed or open source. Researchers may use
-the permissively licensed portions under the root MIT terms, but they must
-obtain prior written permission for the `3d_camera/` component.
+`3d_camera/LICENSE` so that the copyright and permission notices are retained.
 
 This file documents repository scope and is not legal advice.
