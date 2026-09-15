@@ -1,9 +1,11 @@
 # Changelog
 
 All notable repository changes are recorded here. Version numbers follow
-Semantic Versioning once public releases begin.
+Semantic Versioning.
 
 ## [Unreleased]
+
+## [0.1.2] - 2026-09-15
 
 - Consolidated independently packaged components into one installable monorepo
   while preserving the established source-directory names and script wrappers.
@@ -20,10 +22,14 @@ Semantic Versioning once public releases begin.
   Laboratories.”
 - Corrected analysis labels to distinguish mass-based reference volume from
   directly measured true volume.
-- Made the restrictive D405 licensing boundary prominent and aligned the
-  project metadata with beta release status.
+- Released the D405 component under the MIT License with Mostafa Abd Al Kader
+  and IMDEA Materials Institute as copyright holders.
 - Made publication documentation self-contained, removed obsolete apparatus
   examples, and recorded the current model-release status explicitly.
+- Added the public Zenodo record and DOI to the release metadata and model
+  documentation.
+- Documented the Black PP, MCC, and wood-powder paper model hashes and archived
+  session locations without adding model weights to Git.
 
 ## [0.1.0]
 

@@ -16,7 +16,7 @@ from .estimation import (
     estimate_image_level,
 )
 
-__version__ = "0.1.0"
+__version__ = "0.1.2"
 
 _LAZY_EXPORTS = {
     "UltralyticsInferenceAdapter": ("inference", "UltralyticsInferenceAdapter"),

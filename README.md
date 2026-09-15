@@ -24,7 +24,7 @@ acquisition, Intel RealSense D405 depth reconstruction, offline YOLO
 segmentation, traceable records, and method-comparison analysis in one
 installable project.
 
-> **Research status:** beta research release (`v0.1.1`). Software tests verify
+> **Research status:** beta research release (`v0.1.2`). Software tests verify
 > implementation behavior; they do not establish accuracy, traceability, uncertainty, or
 > metrological validation. Use the validation plan and report the frozen
 > configuration, calibration, model hashes, hardware, and software release for
@@ -249,9 +249,10 @@ The software author list and CRediT contribution statement are in
 [`AUTHORS.md`](AUTHORS.md). Root citation metadata is in
 [`CITATION.cff`](CITATION.cff). The canonical source repository is
 [`AMDatIMDEA/dry-material-monitoring`](https://github.com/AMDatIMDEA/dry-material-monitoring).
-The project owner's supplied [Zenodo deposition](https://zenodo.org/uploads/22697983)
-is currently an upload/deposition link; replace it with the public record URL
-and DOI after publication. Before the public release:
+The software and associated paper assets are archived in the
+[Zenodo record](https://zenodo.org/records/22697983), DOI
+[`10.5281/zenodo.22697983`](https://doi.org/10.5281/zenodo.22697983). Before the
+public release:
 
 1. confirm author order and roles with all authors;
 2. add institutional email addresses and ORCIDs;

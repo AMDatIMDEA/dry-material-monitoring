@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dry-material-monitoring"
-version = "0.1.1"
+version = "0.1.2"
 description = "Non-contact RGB, YOLO, and RGB-D monitoring of dry materials for self-driving laboratories"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -47,7 +47,8 @@ dependencies = [
 
 [project.urls]
 Repository = "https://github.com/AMDatIMDEA/dry-material-monitoring"
-"Zenodo deposition" = "https://zenodo.org/uploads/22697983"
+"Zenodo record" = "https://zenodo.org/records/22697983"
+"Zenodo DOI" = "https://doi.org/10.5281/zenodo.22697983"
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]

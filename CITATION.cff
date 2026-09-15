@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: >-
-  If you use this software, cite this software and the associated paper when
-  available. Add the public Zenodo DOI after the deposition is published.
+  If you use this software, cite the exact software release and its associated
+  paper when available.
 type: software
 title: >-
   Non-Contact Dry-Material Monitoring for Self-Driving Laboratories
-version: 0.1.1
+version: 0.1.2
 authors:
   - family-names: Abd Al Kader
     given-names: Mostafa
@@ -18,7 +18,8 @@ abstract: >-
   Intel RealSense D405 bulk-volume reconstruction, offline YOLO segmentation,
   method-neutral experiment records, and traceable measurement analysis.
 repository-code: https://github.com/AMDatIMDEA/dry-material-monitoring
-repository-artifact: https://zenodo.org/uploads/22697983
+repository-artifact: https://zenodo.org/records/22697983
+doi: 10.5281/zenodo.22697983
 keywords:
   - polymer
   - material level

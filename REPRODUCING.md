@@ -25,7 +25,7 @@ py -3.11 -m venv .venv
 ```
 
 `pylock.toml` is the exact Windows/Python 3.11 dependency resolution for the
-`v0.1.0` beta research release. `pyproject.toml` and `requirements.txt` retain bounded
+`v0.1.2` beta research release. `pyproject.toml` and `requirements.txt` retain bounded
 compatibility ranges for maintainers and other supported installations.
 
 For CUDA execution, create a separate environment and install the PyTorch build
